@@ -2,11 +2,17 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 import java.util.Scanner;
 
+/**
+ * class that holds static variables for rounds played and rounds won
+ */
 public class BlackJackController {
     private static int roundsPlayed = 0;
     private static int cpuRoundsWon = 0;
     private static int playerRoundsWon = 0;
 
+    /**
+     * method that contains most of the programs "execution", calling on various other methods throughout
+     */
     public static void playBlackJack() {
         Scanner scanner = new Scanner(System.in);
 
@@ -48,7 +54,7 @@ public class BlackJackController {
             scanner.nextLine();
 
 
-            newDeck.dealCard(player1);                    // TODO allow flexibility with ACE
+            newDeck.dealCard(player1);
             newDeck.dealCard(player2);
             newDeck.dealCard(player1);
             newDeck.dealCard(player2);
@@ -135,7 +141,7 @@ public class BlackJackController {
 
                 player1.getHand().clearHand();
                 player2.getHand().clearHand();
-                newDeck.replenishDeck();                            // TODO reshuffle deck rather than restart
+                newDeck.replenishDeck();
             }
 
         }

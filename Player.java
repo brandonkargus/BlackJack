@@ -1,5 +1,8 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+/**
+ * class that holds a player's name, hand, and pot
+ */
 public class Player {
     private String name;
     private Hand hand;
@@ -18,6 +21,10 @@ public class Player {
         return this.hand;
     }
 
+    /**
+     * method that adds a card to the player's hand, and calls getHandValue() for hand value
+     * @param card
+     */
     public void addCard(Card card) {
 
         this.hand.addCard(card);
@@ -33,6 +40,10 @@ public class Player {
         this.potValue = potValue;
     }
 
+    /**
+     * method that checks if the A.I. will "hit" or "stand", based on hand value
+     * @return
+     */
     public boolean computerAI() {
         return this.hand.getHandValue() < 16;
     }

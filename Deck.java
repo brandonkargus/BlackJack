@@ -3,6 +3,9 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * class containing an Array of "Cards", and ArrayList of used "Cards"
+ */
 public class Deck {
 
     private Card[] cards;
@@ -13,6 +16,9 @@ public class Deck {
         this.usedCards = new ArrayList<>();
     }
 
+    /**
+     * method that populates the deck before the cards are dealt
+     */
     public void setDeck() {
         this.cards = new Card[52];
         for (int i = 0; i < 13; i++) {
@@ -23,6 +29,10 @@ public class Deck {
         }
     }
 
+    /**
+     * method that randomly deals each player a card from the deck
+     * @param player
+     */
     public void dealCard(Player player) {
         int min = 0;
         int max = 51;
@@ -35,6 +45,10 @@ public class Deck {
         usedCards.add(a);
 
     }
+
+    /**
+     * method that clears used card pile, to get ready for next round
+     */
     public void replenishDeck(){
         this.usedCards.clear();
     }

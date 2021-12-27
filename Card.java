@@ -1,5 +1,8 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+/**
+ * class holding a suit and value for each "Card"
+ */
 public class Card {
 
     private int suit;
@@ -20,6 +23,11 @@ public class Card {
 
     }
 
+    /**
+     * shows applicable "suit" in printout
+     * @param suit
+     * @return
+     */
     public char showSuit(int suit) {
         switch (suit) {
             case 0:
@@ -33,6 +41,11 @@ public class Card {
         }
     }
 
+    /**
+     * shows applicable "card number" in printout
+     * @param num
+     * @return
+     */
     public String showCard(int num) {
         switch (num) {
             case 0:
