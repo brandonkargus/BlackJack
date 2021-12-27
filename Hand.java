@@ -11,11 +11,6 @@ public class Hand {
         this.getHandValue();
     }
 
-    public Hand(ArrayList<Card> cards, int handValue) {
-        this.cards = cards;
-        this.handValue = handValue;
-    }
-
     public void addCard(Card card) {
         this.cards.add(card);
     }
@@ -35,9 +30,6 @@ public class Hand {
 
     public void clearHand(){
             this.cards.clear();
-    }
-    public int getSize(){
-        return this.cards.size();
     }
 
     @Override

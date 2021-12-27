@@ -10,12 +10,6 @@ public class Player {
         this.hand = new Hand();
     }
 
-    public Player(String name, Hand hand, int potValue) {
-        this.name = name;
-        this.hand = hand;
-        this.potValue = potValue;
-    }
-
     public String getName() {
         return this.name;
     }

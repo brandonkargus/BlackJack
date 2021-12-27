@@ -13,11 +13,6 @@ public class Deck {
         this.usedCards = new ArrayList<>();
     }
 
-    public Deck(Card[] cards, ArrayList<Integer> usedCards) {
-        this.cards = cards;
-        this.usedCards = usedCards;
-    }
-
     public void setDeck() {
         this.cards = new Card[52];
         for (int i = 0; i < 13; i++) {
