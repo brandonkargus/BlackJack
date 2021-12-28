@@ -38,7 +38,7 @@ Rounds played = 1
 Rounds won by Brandon = 0
 Rounds won by Skynet CPU = 1
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-Deal another round? (y/n)
+Deal another round? ("yes" or "y" deals another round, any other response quits game)
 
 
 
