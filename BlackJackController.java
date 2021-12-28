@@ -1,5 +1,6 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -21,15 +22,29 @@ public class BlackJackController {
 
         Player player2 = new Player("Skynet CPU");
 
-        System.out.println("Please enter a starting pot.......");
 
-        int pot = scanner.nextInt();
-        scanner.nextLine();
-        while (pot < 1) {
-            System.out.println("Pot must be greater than 0... Please enter another number.");
-            pot = scanner.nextInt();
-            scanner.nextLine();
+        boolean valid = true;
+        System.out.println("Please enter a starting pot.......");
+        int pot = 0;
+        while (valid) {
+            try {
+                pot = scanner.nextInt();
+                while (pot < 1) {
+                    System.out.println("Pot must be greater than 0... Please enter another number.");
+                    pot = scanner.nextInt();
+                }
+                valid = false;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid entry, please enter a number:");
+                scanner.next();
+                valid = true;
+
+            }
         }
+
+        scanner.nextLine();
+
 
         player1.setPotValue(pot);
         player2.setPotValue(pot);
@@ -46,12 +61,27 @@ public class BlackJackController {
             int max = player2.getPotValue();
             int player2bet = (int) (Math.random() * (max - min + 1) + min);
             System.out.println("Please place your bets.....");
-            int player1bet = scanner.nextInt();
-            while (player1bet < 1 || player1bet > player1.getPotValue()) {
-                System.out.println("Invalid amount, please enter amount greater than zero, and less than or equal to current potValue...");
-                player1bet = scanner.nextInt();
+
+
+            int player1bet = 0;
+            boolean validBet = true;
+            while (validBet) {
+                try {
+                    player1bet = scanner.nextInt();
+                   scanner.nextLine();
+                    while (player1bet < 1 || player1bet > player1.getPotValue()) {
+                        System.out.println("Invalid amount, please enter amount greater than zero, and less than or equal to current potValue...");
+                        player1bet = scanner.nextInt();
+                        scanner.nextLine();
+                    }
+                    validBet = false;
+
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid entry, please enter a number:");
+                    scanner.next();
+                    validBet = true;
+                }
             }
-            scanner.nextLine();
 
 
             newDeck.dealCard(player1);
@@ -66,26 +96,35 @@ public class BlackJackController {
             System.out.println(player1);
             System.out.println();
 
-            System.out.println("Would you like another card?");
 
-            String answer = scanner.nextLine();
-            while ((answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) && !player1.getHand().overTwentyOne()) {
+            boolean validResponse = true;
 
+            while (validResponse) {
+                try {
+                    System.out.println("Would you like another card? (\"yes\" or \"y\" deals another card, any other response declines a card)");
+                    String answer = scanner.nextLine();
+                    while ((answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) && !player1.getHand().overTwentyOne()) {
 
-                System.out.println("You've asked for another card......");
-                newDeck.dealCard(player1);
-                System.out.println();
-                System.out.println(player1);
-                if (!player1.getHand().overTwentyOne()) {
+                        System.out.println("You've asked for another card......");
+                        newDeck.dealCard(player1);
+                        System.out.println();
+                        System.out.println(player1);
+                        if (!player1.getHand().overTwentyOne()) {
 
-                    System.out.println("Would you like another card?");
-                    answer = scanner.nextLine();
+                            System.out.println("Would you like another card?");
+                            answer = scanner.nextLine();
 
+                        }
+                        System.out.println();
+                    }
+                    validResponse = false;
+
+                } catch (Exception e) {
+                    System.out.println("Invalid entry, please try again:");
+                    scanner.next();
                 }
-
-                System.out.println();
-
             }
+
 
             while (player2.computerAI()) {
                 System.out.println(player2.getName() + " has asked for another card......");
@@ -135,7 +174,7 @@ public class BlackJackController {
 
             System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
             if (player1.getPotValue() > 0 && player2.getPotValue() > 0) {
-                System.out.println("Deal another round? (y/n)");
+                System.out.println("Deal another round? (\"yes\" or \"y\" deals another round, any other response quits game)");
                 String yesOrNo = scanner.nextLine();
                 response = yesOrNo.equalsIgnoreCase("y") || yesOrNo.equalsIgnoreCase("yes");
 
